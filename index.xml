@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>My New Hugo Site</title>
+    <link>https://yogeshjain96.io/gohugo/</link>
+    <description>Recent content on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 07 Jun 2021 17:03:02 +0530</lastBuildDate><atom:link href="https://yogeshjain96.io/gohugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>File2</title>
+      <link>https://yogeshjain96.io/gohugo/test/file2/</link>
+      <pubDate>Mon, 07 Jun 2021 17:03:02 +0530</pubDate>
+      
+      <guid>https://yogeshjain96.io/gohugo/test/file2/</guid>
+      <description>File2 </description>
+    </item>
+    
+    <item>
+      <title>File1</title>
+      <link>https://yogeshjain96.io/gohugo/test/file1/</link>
+      <pubDate>Mon, 07 Jun 2021 17:02:56 +0530</pubDate>
+      
+      <guid>https://yogeshjain96.io/gohugo/test/file1/</guid>
+      <description>File1 </description>
+    </item>
+    
+  </channel>
+</rss>
