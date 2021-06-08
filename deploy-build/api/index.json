@@ -6,7 +6,7 @@
     "name": "Incidents",
     "date" : "<no value>",
     "status" : "<no value>",
-    "permalink" : "https://yogeshjain96.github.io/gohugo/incidents/index.json",
+    "permalink" : "https://yogeshjain96.github.io/gohugo/api/incidents/index.json",
     "summary" : ""
 }
     
@@ -14,7 +14,7 @@
     "name": "System Status",
     "date" : "2021-06-08 15:50:27 +0530 IST",
     "status" : "All Good.",
-    "permalink" : "https://yogeshjain96.github.io/gohugo/system-status/index.json",
+    "permalink" : "https://yogeshjain96.github.io/gohugo/api/system-status/index.json",
     "summary" : "System Status - All Good."
 }
     

@@ -1,6 +1,7 @@
 {
   "name": "gohugo",
   "version": "1.0.0",
+  "homepage": "https://yogeshjain96.io/gohugo/",
   "description": "Status Page POC",
   "main": "index.js",
   "scripts": {
@@ -15,7 +16,6 @@
     "deploy:app": "gh-pages -d app/build"
   },
   "keywords": [],
-  "homepage": "https://yogeshjain96.io/gohugo",
   "author": "Yogesh Jain",
   "license": "ISC",
   "dependencies": {

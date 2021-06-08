@@ -1,4 +1,4 @@
-baseURL = "https://yogeshjain96.github.io/gohugo"
+baseURL = "https://yogeshjain96.github.io/gohugo/api/"
 languageCode = "en-us"
 title = "Status_POC APIs"
 [outputs]
