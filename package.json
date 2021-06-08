@@ -4,13 +4,15 @@
   "description": "Status Page POC",
   "main": "index.js",
   "scripts": {
-    "deploy": "rm -rf build && cp -R app/build build && cp -R server/api build/api && gh-pages -d build",
-    "deploy:api": "gh-pages -d server/api",
-    "deploy:app": "gh-pages -d app/build",
     "server": "cd server && hugo server",
     "app": "cd app && yarn start",
+    "build": "npm run build:api && npm run build:app && npm run copy-build",
+    "copy-build": "rm -rf deploy-build && cp -R app/build deploy-build && cp -R server/api deploy-build/api",
     "build:api": "cd server && rm -rf api && hugo -d api",
-    "build:app": "cd app && yarn build"
+    "build:app": "cd app && yarn build && cd build",
+    "deploy": "gh-pages -d deploy-build",
+    "deploy:api": "gh-pages -d server/api",
+    "deploy:app": "gh-pages -d app/build"
   },
   "keywords": [],
   "homepage": "https://yogeshjain96.io/gohugo",
