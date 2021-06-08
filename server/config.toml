@@ -1,0 +1,7 @@
+baseURL = "https://yogeshjain96.github.io/gohugo"
+languageCode = "en-us"
+title = "Status_POC APIs"
+[outputs]
+    page = ["json"]
+    home = ["json"]
+    section = ["json"]

@@ -1,11 +1,16 @@
 {
   "name": "gohugo",
   "version": "1.0.0",
-  "description": "Play with Hugo",
+  "description": "Status Page POC",
   "main": "index.js",
   "scripts": {
-    "deploy": "gh-pages -d public",
-    "build": "rm -rf public && hugo"
+    "deploy": "rm -rf build && cp -R app/build build && cp -R server/api build/api && gh-pages -d build",
+    "deploy:api": "gh-pages -d server/api",
+    "deploy:app": "gh-pages -d app/build",
+    "server": "cd server && hugo server",
+    "app": "cd app && yarn start",
+    "build:api": "cd server && rm -rf api && hugo -d api",
+    "build:app": "cd app && yarn build"
   },
   "keywords": [],
   "homepage": "https://yogeshjain96.io/gohugo",

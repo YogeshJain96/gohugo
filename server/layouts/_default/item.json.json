@@ -1,0 +1,7 @@
+{
+    "name": "{{ .Title }}",
+    "date" : "{{ .Params.date }}",
+    "status" : "{{ .Params.status }}",
+    "permalink" : "{{ .Permalink }}",
+    "summary" : "{{ .Summary }}"
+}
