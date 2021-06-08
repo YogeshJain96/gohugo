@@ -1,0 +1,31 @@
+{
+    "data" : 
+[
+    
+    {
+    "name": "Incident 3",
+    "date" : "2021-06-08 15:52:05 +0530 IST",
+    "status" : "unresolved",
+    "permalink" : "https://yogeshjain96.github.io/gohugo/incidents/incident-3/index.json",
+    "summary" : "Incident-3: Critical Status"
+}
+    
+    , {
+    "name": "Incident 2",
+    "date" : "2021-04-08 15:52:04 +0530 IST",
+    "status" : "unresolved",
+    "permalink" : "https://yogeshjain96.github.io/gohugo/incidents/incident-2/index.json",
+    "summary" : "Incident-2: High Priority"
+}
+    
+    , {
+    "name": "Incident 1",
+    "date" : "2021-03-08 15:52:01 +0530 IST",
+    "status" : "resolved",
+    "permalink" : "https://yogeshjain96.github.io/gohugo/incidents/incident-1/index.json",
+    "summary" : "Incident-1: Low Priority"
+}
+    
+]
+
+}
