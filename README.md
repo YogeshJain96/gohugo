@@ -1,3 +1,5 @@
+[![Build & deploy](https://github.com/YogeshJain96/gohugo/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/YogeshJain96/gohugo/actions/workflows/gh-pages.yml)
+
 # Web Application Status PoC
 
 ## Status-UI is made in react can be accessed with URL below:
