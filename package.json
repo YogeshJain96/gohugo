@@ -9,7 +9,7 @@
     "server": "cd server && hugo server",
     "app": "cd app && npm run start",
     "build": "npm run build:api && npm run build:app && npm run copy-build",
-    "copy-build": "rm -rf deploy-build && cp -R app/build deploy-build && cp -R server/api deploy-build/api && ./update-path.sh",
+    "copy-build": "rm -rf deploy-build && cp -R app/build deploy-build && cp -R server/api deploy-build/api",
     "build:api": "cd server && rm -rf api && hugo -d api",
     "build:app": "cd app && npm run build",
     "predeploy": "./update-path.sh",
