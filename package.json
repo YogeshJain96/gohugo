@@ -10,7 +10,7 @@
     "build": "npm run build:api && npm run build:app && npm run copy-build",
     "copy-build": "rm -rf deploy-build && cp -R app/build deploy-build && cp -R server/api deploy-build/api",
     "build:api": "cd server && rm -rf api && hugo -d api",
-    "build:app": "cd app && npm run build && cd build",
+    "build:app": "cd app && npm run build",
     "predeploy": "npm run build && ./update-path.sh",
     "deploy": "gh-pages -d deploy-build",
     "deploy:api": "gh-pages -d server/api",
