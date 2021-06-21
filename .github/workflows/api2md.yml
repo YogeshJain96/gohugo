@@ -30,7 +30,29 @@ jobs:
           
       - name: execute py script # run py-script to get the latest data
         run: python main.py
-          
+      
+      - name: Upload Markdown Files
+        uses: actions/upload-artifact@v2
+        with:
+          name: markdown-files
+          path: ./
+        
+  Publish:
+    name: Publish
+    needs: fetch-data-from-api
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+        
+    steps:
+      - name: checkout current repo
+        uses: actions/checkout@v2 # checkout the repository content to github runner
+      
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: markdown-files
+          path: ./
+
       - name: commit files
         run: |
           git config --local user.email "action@github.com"
