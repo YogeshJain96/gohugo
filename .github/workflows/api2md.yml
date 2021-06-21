@@ -17,7 +17,6 @@ jobs:
         uses: actions/checkout@v2 # checkout the repository content to github runner
         with:
           repository: YogeshJain96/test-api
-          path: main
 
       - name: setup python
         uses: actions/setup-python@v2
