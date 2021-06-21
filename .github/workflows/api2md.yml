@@ -13,8 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: checkout repo content
+      - name: checkout test-api repo
         uses: actions/checkout@v2 # checkout the repository content to github runner
+        with:
+          repository: YogeshJain96/test-api
+          path: main
 
       - name: setup python
         uses: actions/setup-python@v2
@@ -24,19 +27,17 @@ jobs:
       - name: install python packages
         run: |
           python -m pip install --upgrade pip
-          pip install -r scripts/requirements.txt
+          pip install -r requirements.txt
           
-      - name: execute get-date-time.py # run py-script to get the latest data
-        # env: 
-        #   EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
-        run: python scripts/last-updated-datetime.py # TODO : replace with upm-pagerduty-api repo
+      - name: execute py script # run py-script to get the latest data
+        run: main.py
           
       - name: commit files
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
-          git commit -m "Update MD files" -a
+          git commit -m "Update MD files as per API response" -a
           
       - name: push changes
         uses: ad-m/github-push-action@v0.6.0
