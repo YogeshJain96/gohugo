@@ -2,8 +2,8 @@ name: Update md files Test
 
 on:
   # push:
-  # schedule:
-  #  - cron: "*/5 * * * *" # Run every 5 mins
+  schedule:
+   - cron: "*/5 * * * *" # Run every 5 mins
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
