@@ -30,18 +30,15 @@ jobs:
           
       - name: execute py script # run py-script to get the latest data
         run: python main.py
-        
-      - name: pwd
-        run: pwd
 
-      - name: ls
-        run: ls
+      - name: Display current structure of downloaded files
+        run: pwd && ls -R
         
       - name: Upload Markdown Files
         uses: actions/upload-artifact@v2
         with:
           name: markdown-files
-          path: ./*.md
+          path: ./output-files/*.md
         
   Publish:
     name: Publish
@@ -57,9 +54,10 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: markdown-files
-          path: ./
+          path: ./output-files
+          
       - name: Display structure of downloaded files
-        run: ls -R
+        run: pwd && ls -R
         working-directory: ./
 
       - name: commit files
