@@ -1,9 +1,9 @@
 {
     "data" :  {
     "name": "Incident 1",
-    "date" : "2021-03-08 15:52:01 +0530 +0530",
-    "status" : "un-resolved",
+    "date" : "2021-03-08 15:52:01 +0530 IST",
+    "status" : "resolved",
     "permalink" : "https://yogeshjain96.github.io/gohugo/api/incidents/incident-1/index.json",
-    "summary" : "Incident-1: High Priority"
+    "summary" : "Incident-1: Low Priority"
 } 
 }

@@ -1,7 +1,7 @@
 {
     "data" :  {
     "name": "Incident 3",
-    "date" : "2021-06-08 15:52:05 +0530 +0530",
+    "date" : "2021-06-08 15:52:05 +0530 IST",
     "status" : "unresolved",
     "permalink" : "https://yogeshjain96.github.io/gohugo/api/incidents/incident-3/index.json",
     "summary" : "Incident-3: Critical Status"
