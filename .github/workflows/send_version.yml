@@ -3,11 +3,11 @@ on:
 
 name: Release Version
 jobs:
-  latest-version:
+  get-latest-version:
     name: Get Latest Release
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: "call action"
       id: last_release
       uses: InsonusK/get-latest-release@v1.0.1
@@ -15,6 +15,11 @@ jobs:
         myToken: ${{ github.token }}
         exclude_types: "draft"
         view_top: 1
+    - uses: actions/download-artifact@v2
+      name: "Get ISSUE id"
+      with:
+        name: issue_id
     - name: "Print TAG NAME"
       run: |
         echo "tag_name: ${{ steps.last_release.outputs.tag_name }}"
+        ls -ltR
