@@ -1,5 +1,3 @@
-43 lines (41 sloc)  1.29 KB
-   
 on:
   workflow_dispatch:
     inputs:
@@ -20,9 +18,9 @@ jobs:
 
       - name: Generate file
         run: |
-        echo ${{ github.event.inputs.issue_id }} > issue_id.txt
-        ls -ltR
-        cat issue_id.txt
+         echo ${{ github.event.inputs.issue_id }} > issue_id.txt
+         ls -ltR
+         cat issue_id.txt
 
       - name: Upload  issue id file
         uses: actions/upload-artifact@v2
