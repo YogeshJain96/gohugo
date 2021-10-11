@@ -1,0 +1,31 @@
+43 lines (41 sloc)  1.29 KB
+   
+on:
+  workflow_dispatch:
+    inputs:
+      issue_id:
+        description: 'Issue ID'     
+        required: true
+     
+name: Update Source & upload issue id
+
+jobs:
+  upload_issue_id:
+    name: upload issue id
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Generate file
+        run: |
+        echo ${{ github.event.inputs.issue_id }} > issue_id.txt
+        ls -ltR
+        cat issue_id.txt
+
+      - name: Upload  issue id file
+        uses: actions/upload-artifact@v2
+        with:
+          name: issue_id_file
+          path: issue_id.txt
