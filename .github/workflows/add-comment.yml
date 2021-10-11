@@ -1,0 +1,31 @@
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      issue_id:
+        description: 'Issue ID'     
+        required: true
+      version:
+        description: 'Version'     
+        required: true
+
+name: Add comment to issue
+
+jobs:
+  comment:
+    name: Add comment
+    runs-on: ubuntu-latest
+    steps:
+      - name: printInputs
+        run: |
+          echo "Version: ${{ github.event.inputs.version }}"
+          echo "Issue Id: ${{ github.event.inputs.issue_id }}"
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.inputs.issue_id }}
+          body: |
+            INFO
+            - Version: ${{ github.event.inputs.version }}
+            - Commented on Issue Id: ${{ github.event.inputs.issue_id }}
+            
