@@ -15,11 +15,6 @@ jobs:
         myToken: ${{ github.token }}
         exclude_types: "draft"
         view_top: 1
-    - name: "Print result"
+    - name: "Print TAG NAME"
       run: |
-        echo "id: ${{ steps.last_release.outputs.id }}"
-        echo "name: ${{ steps.last_release.outputs.name }}"
         echo "tag_name: ${{ steps.last_release.outputs.tag_name }}"
-        echo "created_at: ${{ steps.last_release.outputs.created_atd }}"
-        echo "draft: ${{ steps.last_release.outputs.draft }}"
-        echo "prerelease: ${{ steps.last_release.outputs.prerelease }}"
