@@ -1,7 +1,7 @@
 on: 
   workflow_dispatch:
 
-name: Release Version
+name: Send Release Version & Issue ID
 jobs:
   get-latest-version:
     name: Get Latest Release
@@ -22,4 +22,4 @@ jobs:
     - name: "Print TAG NAME"
       run: |
         echo "tag_name: ${{ steps.last_release.outputs.tag_name }}"
-        ls -ltR
+        cat issue_id_file/issue_id.txt
