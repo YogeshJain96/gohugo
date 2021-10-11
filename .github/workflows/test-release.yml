@@ -22,7 +22,8 @@ jobs:
     steps:
       - name: printInputs
         run: |
-          echo "Commit Hash: ${{ github.event.inputs.commitish }}"  
+          echo "Commit Hash: ${{ github.event.inputs.commitish }}"
+          echo "Tag Name: ${{ github.event.inputs.tagName }}"
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Create Release
@@ -33,6 +34,7 @@ jobs:
         with:
           tag_name: ${{ github.event.inputs.tagName }}
           release_name: Release ${{ github.event.inputs.tagName }}
+          commitish: ${{ github.event.inputs.commitish }}
           body: |
             Changes in this Release
             - First Change
