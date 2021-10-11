@@ -18,7 +18,7 @@ jobs:
     - uses: actions/download-artifact@v2
       name: "Get ISSUE id"
       with:
-        name: issue_id
+        name: issue_id_file
     - name: "Print TAG NAME"
       run: |
         echo "tag_name: ${{ steps.last_release.outputs.tag_name }}"
