@@ -7,17 +7,19 @@ jobs:
     name: Get Latest Release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: Get Latest Release
-        id: latest_version
-        uses: abatilo/release-info-action@v1.3.0
-        with:
-          owner: abatilo
-          repo: release-info-action
-      - name: Consumption of the output
-        env:
-          LATEST: ${{ steps.latest_version.outputs.latest_tag }}
-          LATEST_DATE: ${{ steps.latest_version.outputs.latest_tag_published_at }}
-          COMMITISH: ${{ steps.latest_version.outputs.target_commitish }}
-        run: |
-          echo "Version $LATEST was released at $LATEST_DATE [$COMMITISH]"
+    - uses: actions/checkout@v1
+    - name: "call action"
+      id: last_release
+      uses: InsonusK/get-latest-release@v1.0.1
+      with:
+        myToken: ${{ github.token }}
+        exclude_types: "draft"
+        view_top: 1
+    - name: "Print result"
+      run: |
+        echo "id: ${{ steps.last_release.outputs.id }}"
+        echo "name: ${{ steps.last_release.outputs.name }}"
+        echo "tag_name: ${{ steps.last_release.outputs.tag_name }}"
+        echo "created_at: ${{ steps.last_release.outputs.created_atd }}"
+        echo "draft: ${{ steps.last_release.outputs.draft }}"
+        echo "prerelease: ${{ steps.last_release.outputs.prerelease }}"
