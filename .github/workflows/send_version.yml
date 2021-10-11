@@ -1,0 +1,23 @@
+on: 
+  workflow_dispatch:
+
+name: Release Version
+jobs:
+  latest-version:
+    name: Get Latest Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Get Latest Release
+        id: latest_version
+        uses: abatilo/release-info-action@v1.3.0
+        with:
+          owner: abatilo
+          repo: release-info-action
+      - name: Consumption of the output
+        env:
+          LATEST: ${{ steps.latest_version.outputs.latest_tag }}
+          LATEST_DATE: ${{ steps.latest_version.outputs.latest_tag_published_at }}
+          COMMITISH: ${{ steps.latest_version.outputs.target_commitish }}
+        run: |
+          echo "Version $LATEST was released at $LATEST_DATE [$COMMITISH]"
