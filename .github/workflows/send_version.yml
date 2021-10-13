@@ -1,5 +1,8 @@
 on: 
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 name: Send Release Version & Issue ID
 jobs:
@@ -23,3 +26,4 @@ jobs:
       run: |
         echo "tag_name: ${{ steps.last_release.outputs.tag_name }}"
         cat issue_id_file/issue_id.txt
+        echo ${{ github.head_ref }}.${{ github.sha }}
