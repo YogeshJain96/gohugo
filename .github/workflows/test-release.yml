@@ -8,7 +8,7 @@ on:
     inputs:
       commitish:
         description: 'Commit Hash'     
-        required: true
+        required: false
       tagName:
         description: 'Tag Name'     
         required: true
