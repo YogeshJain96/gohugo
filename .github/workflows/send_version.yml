@@ -26,7 +26,9 @@ jobs:
       run: |
         echo "tag_name: ${{ steps.last_release.outputs.tag_name }}"
         cat issue_id_file/issue_id.txt
-        echo ${{ github.head_ref }}.${{ github.sha }}
+        echo ${{ github.sha }}
+        echo get log info
+        git log --pretty=format:'%H' -1
     # delete-artifact
     - uses: geekyeggo/delete-artifact@v1
       with:
