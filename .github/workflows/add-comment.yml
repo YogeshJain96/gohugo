@@ -7,7 +7,7 @@ on:
         required: true
       version:
         description: 'Version'     
-        required: true
+        required: false
 
 name: Add comment to issue
 
@@ -20,6 +20,15 @@ jobs:
         run: |
           echo "Version: ${{ github.event.inputs.version }}"
           echo "Issue Id: ${{ github.event.inputs.issue_id }}"
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: main
+      - name: Set commitish
+        run: echo '::set-output name=commitish::git log --pretty=format:'%H' -1'
+        id: commit-hash
+      - name: Get Commit Hash: 
+        run: echo "Commit Hash: ${{ steps.commit-hash.outputs.commitish }}"
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v1
         with:
@@ -27,5 +36,8 @@ jobs:
           body: |
             INFO
             - Version: ${{ github.event.inputs.version }}
+            - Commit Hash: ${{ steps.commit-hash.outputs.commitish }}
             - Commented on Issue Id: ${{ github.event.inputs.issue_id }}
+
+
             
