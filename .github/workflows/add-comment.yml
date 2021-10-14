@@ -27,8 +27,8 @@ jobs:
       - name: Set commitish
         run: echo '::set-output name=commitish::git log --pretty=format:'%H' -1'
         id: commit-hash
-      - name: Get Commit Hash: 
-        run: echo "Commit Hash: ${{ steps.commit-hash.outputs.commitish }}"
+      - name: Get Commit Hash
+        run: echo "Commit Hash ${{ steps.commit-hash.outputs.commitish }}"
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v1
         with:
