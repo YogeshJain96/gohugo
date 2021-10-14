@@ -35,6 +35,7 @@ jobs:
       - name: Get component versions
         run: |
           echo "::set-output name=versions::`echo -n $(python test.py)`"
+          id: version-info
       - name: Print
         run: |
           echo "Commit Hash ${{ steps.commit-hash.outputs.commitish }}"
