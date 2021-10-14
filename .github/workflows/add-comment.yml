@@ -26,7 +26,7 @@ jobs:
           path: main
       - name: Set commitish
         run: |
-          cd gohugo
+          ls -ltr
           output="$(git log --pretty=format:'%H' -1)"
           echo '::set-output name=commitish::${output}'
         id: commit-hash
