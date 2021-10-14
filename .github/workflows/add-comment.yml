@@ -16,12 +16,15 @@ jobs:
     name: Add comment
     runs-on: ubuntu-latest
     steps:
-      - name: checkout current repo
-        uses: actions/checkout@v2 # checkout the repository content to github runner
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
       - name: Set commitish
         run: |
           ls -ltr
-          output="$(git log --pretty=format:'%H' -1)"
+          git pull origin main
           echo "::set-output name=commitish::`echo $(git log --pretty=format:'%H' -1)`"
         id: commit-hash
       - name: Setup python
