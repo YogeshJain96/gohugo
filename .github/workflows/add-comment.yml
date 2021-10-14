@@ -26,6 +26,17 @@ jobs:
         id: commit-hash
       - name: Get Commit Hash
         run: echo "Commit Hash ${{ steps.commit-hash.outputs.commitish }}"
+      - name: Setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8 #install the python needed
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml
+      - name: Get component versions
+        run: |
+          echo "::set-output name=versions::`echo $(python test.py)`"
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v1
         with:
@@ -35,6 +46,7 @@ jobs:
             - Version: ${{ github.event.inputs.version }}
             - Commit Hash: ${{ steps.commit-hash.outputs.commitish }}
             - Commented on Issue Id: ${{ github.event.inputs.issue_id }}
+            ${{ steps.version-info.outputs.versions }}
 
 
             
