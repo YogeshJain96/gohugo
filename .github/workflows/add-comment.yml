@@ -43,6 +43,13 @@ jobs:
         run: |
           echo "Commit Hash ${{ steps.commit-hash.outputs.commitish }}"
           echo "Version ${{ steps.version-info.outputs.versions }}"
+      - name: Read version_info.txt
+        id: version_info
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./version_info.txt
+      - name: Echo version_info.txt
+        run: echo "${{ steps.version_info.outputs.content }}"
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v1
         with:
@@ -54,6 +61,8 @@ jobs:
             - Commented on Issue Id: ${{ github.event.inputs.issue_id }}
             - Other info
             ${{ steps.version-info.outputs.versions }}
+            - https://github.com/YogeshJain96/gohugo/commit/${{ steps.commit-hash.outputs.commitish }}
+            ${{ steps.version_info.outputs.content }}
 
 
             
