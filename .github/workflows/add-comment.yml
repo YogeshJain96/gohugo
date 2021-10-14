@@ -24,8 +24,6 @@ jobs:
           output="$(git log --pretty=format:'%H' -1)"
           echo "::set-output name=commitish::`echo $(git log --pretty=format:'%H' -1)`"
         id: commit-hash
-      - name: Get Commit Hash
-        run: echo "Commit Hash ${{ steps.commit-hash.outputs.commitish }}"
       - name: Setup python
         uses: actions/setup-python@v2
         with:
@@ -36,7 +34,11 @@ jobs:
           pip install pyyaml
       - name: Get component versions
         run: |
-          echo "::set-output name=versions::`echo $(python test.py)`"
+          echo "::set-output name=versions::`echo -n $(python test.py)`"
+      - name: Print
+        run: |
+          echo "Commit Hash ${{ steps.commit-hash.outputs.commitish }}"
+          echo "Version ${{ steps.version-info.outputs.versions }}"
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v1
         with:
@@ -46,6 +48,7 @@ jobs:
             - Version: ${{ github.event.inputs.version }}
             - Commit Hash: ${{ steps.commit-hash.outputs.commitish }}
             - Commented on Issue Id: ${{ github.event.inputs.issue_id }}
+            - Other info
             ${{ steps.version-info.outputs.versions }}
 
 
