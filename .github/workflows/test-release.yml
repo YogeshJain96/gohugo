@@ -27,7 +27,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Create Release
-        if: ( ${{ github.event.inputs.commitish }} == '' )
+        if: ${{ github.event.inputs.commitish  == ''  }}
         id: create_release
         uses: actions/create-release@v1
         env:
@@ -42,7 +42,7 @@ jobs:
           draft: false
           prerelease: false
       - name: Create Release with commitish
-        if: ( ${{ github.event.inputs.commitish }} != '' )
+        if: ${{ github.event.inputs.commitish  != '' }}
         id: create_release_commitish
         uses: actions/create-release@v1
         env:
