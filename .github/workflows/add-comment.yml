@@ -34,7 +34,7 @@ jobs:
           pip install pyyaml
       - name: Get component versions
         run: |
-          echo "::set-output name=versions::`echo -n $(python test.py)`"
+          echo "::set-output name=versions::`echo $(python test.py)`"
         id: version-info
       - name: Print
         run: |
