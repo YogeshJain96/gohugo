@@ -25,7 +25,9 @@ jobs:
         with:
           path: main
       - name: Set commitish
-        run: echo '::set-output name=commitish::$(git log --pretty=format:'%H' -1)'
+        run: |
+          output="$(git log --pretty=format:'%H' -1)"
+          echo '::set-output name=commitish::${{output}}'
         id: commit-hash
       - name: Get Commit Hash
         run: echo "Commit Hash ${{ steps.commit-hash.outputs.commitish }}"
