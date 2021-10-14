@@ -24,6 +24,9 @@ jobs:
         run: |
           echo "Commit Hash: ${{ github.event.inputs.commitish }}"
           echo "Tag Name: ${{ github.event.inputs.tagName }}"
+          echo "${{ github.event.inputs.commitish  == ''  }}"
+          echo "(${{ github.event.inputs.commitish }} == '')"
+          
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Create Release
