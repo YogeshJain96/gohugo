@@ -44,8 +44,17 @@ jobs:
             - Second Change
           draft: false
           prerelease: false
-      - name: Create Release with commitish
+      - name: Verify Commit SHA
         if: ${{ github.event.inputs.commitish  != 'NA' }}
+        run: |
+          if git cat-file -e $sha^{commit}; then
+           echo "::set-output name=sha_exists::`echo true`"
+          else
+           echo "::set-output name=sha_exists::`echo false`"
+          fi
+        id: commit-exists
+      - name: Create Release with commitish
+        if: ${{ github.event.inputs.commitish  != 'NA' && steps.commit-exists.outputs.sha_exists }}
         id: create_release_commitish
         uses: actions/create-release@v1
         env:
@@ -60,3 +69,11 @@ jobs:
             - Second Change
           draft: false
           prerelease: false
+      - name: Add Comment
+        if: ${{ !steps.commit-exists.outputs.sha_exists }}
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: 1
+          body: |
+            ERROR
+            - Commit Hash:- ${{ steps.commit-hash.outputs.commitish }} doesn't exist.
