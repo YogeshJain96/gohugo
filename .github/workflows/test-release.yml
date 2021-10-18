@@ -29,6 +29,8 @@ jobs:
           
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Create Release
         if: ${{ github.event.inputs.commitish  == 'NA'  }}
         id: create_release
