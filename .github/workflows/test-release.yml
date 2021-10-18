@@ -48,13 +48,13 @@ jobs:
         if: ${{ github.event.inputs.commitish != 'NA' }}
         run: |
           if git cat-file -e ${{ github.event.inputs.commitish }}a^{commit}; then
-           echo "::set-output name=sha_exists::`echo true`"
+           echo "::set-output name=sha_exists::`echo 1`"
           else
-           echo "::set-output name=sha_exists::`echo false`"
+           echo "::set-output name=sha_exists::`echo 0`"
           fi
         id: commit-exists
       - name: Create Release with commitish
-        if: ${{ github.event.inputs.commitish  != 'NA' && steps.commit-exists.outputs.sha_exists }}
+        if: ${{ github.event.inputs.commitish  != 'NA' && steps.commit-exists.outputs.sha_exists == 1 }}
         id: create_release_commitish
         uses: actions/create-release@v1
         env:
@@ -70,7 +70,7 @@ jobs:
           draft: false
           prerelease: false
       - name: Add Comment
-        if: ${{ !steps.commit-exists.outputs.sha_exists }}
+        if: ${{ steps.commit-exists.outputs.sha_exists == 0 }}
         uses: peter-evans/create-or-update-comment@v1
         with:
           issue-number: 1
