@@ -44,11 +44,14 @@ jobs:
             - Second Change
           draft: false
           prerelease: false
+      - name: print
+        run: |
+          pwd
+          git log
       - name: Verify Commit SHA
         if: ${{ github.event.inputs.commitish != 'NA' }}
         run: |
           pwd
-          ls -ltR
           if git cat-file -e ${{ github.event.inputs.commitish }}^{commit}; then
            echo "::set-output name=sha_exists::`echo 1`"
           else
