@@ -71,7 +71,7 @@ jobs:
           draft: false
           prerelease: false
       - name: Add Comment
-        if: ${{ steps.commit-exists.outputs.sha_exists == 0 }}
+        if: ${{ github.event.inputs.commitish != 'NA' && steps.commit-exists.outputs.sha_exists == 0 }}
         uses: peter-evans/create-or-update-comment@v1
         with:
           issue-number: 1
