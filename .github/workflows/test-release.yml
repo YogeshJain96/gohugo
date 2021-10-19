@@ -50,7 +50,7 @@ jobs:
       - name: Verify Commit SHA
         if: ${{ github.event.inputs.commitish != 'NA' }}
         run: |
-          git fetch --all
+          git fetch --unshallow
           if git cat-file -e ${{ github.event.inputs.commitish }}^{commit}; then
            echo "::set-output name=sha_exists::`echo 1`"
           else
