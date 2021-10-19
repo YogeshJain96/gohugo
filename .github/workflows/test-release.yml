@@ -29,8 +29,6 @@ jobs:
           
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
       - name: Create Release
         if: ${{ github.event.inputs.commitish  == 'NA'  }}
         id: create_release
@@ -52,6 +50,7 @@ jobs:
       - name: Verify Commit SHA
         if: ${{ github.event.inputs.commitish != 'NA' }}
         run: |
+          git fetch --all
           if git cat-file -e ${{ github.event.inputs.commitish }}^{commit}; then
            echo "::set-output name=sha_exists::`echo 1`"
           else
