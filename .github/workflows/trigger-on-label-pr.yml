@@ -9,11 +9,11 @@ on:
 
 jobs:
   build:
-    if: contains( toJson(github), 'run-test' )
+    if: contains(toJson(github), 'run-test')
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
     - name: Run Script
-      run: echo ${{ github.event.label.name }}
+      run: echo toJson(github)
   
